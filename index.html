@@ -2,17 +2,84 @@
 <html lang="en">
 
 <head>
-  <title>&lt;model-viewer&gt; template</title>
+  <title>3D Model Viewer</title>
   <meta charset="utf-8">
-  <meta name="description" content="&lt;model-viewer&gt; template">
+  <meta name="description" content="Model Viewer for 3D models">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link type="text/css" href="./styles.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 80vh;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #ar-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #ar-button:hover {
+      background-color: #0056b3;
+    }
+
+    #ar-prompt {
+      display: none;
+      text-align: center;
+    }
+
+    #ar-prompt img {
+      width: 50px;
+      height: auto;
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 5px;
+      background-color: #ddd;
+      border-radius: 5px;
+    }
+
+    .update-bar {
+      width: 0;
+      height: 100%;
+      background-color: #007bff;
+      border-radius: 5px;
+      transition: width 0.5s;
+    }
+  </style>
 </head>
 
 <body>
   <!-- <model-viewer> HTML element -->
   <model-viewer src="models/among_us_3d_modelo_con_esqueleto.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
-    tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" autoplay>
+    tone-mapping="neutral" shadow-intensity="1" autoplay>
     <div class="progress-bar hide" slot="progress-bar">
       <div class="update-bar"></div>
     </div>
@@ -20,9 +87,10 @@
       View in your space
     </button>
     <div id="ar-prompt">
-      <img src="ar_hand_prompt.png">
+      <img src="ar_hand_prompt.png" alt="AR Prompt">
     </div>
   </model-viewer>
+
   <script src="script.js"></script>
   <!-- Loads <model-viewer> for browsers: -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
