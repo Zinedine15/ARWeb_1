@@ -13,16 +13,32 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
       height: 100vh;
       background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     model-viewer {
       width: 100%;
       max-width: 600px;
-      height: 80vh;
+      height: 70vh;
       border: 2px solid #ccc;
       border-radius: 10px;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -73,23 +89,41 @@
       border-radius: 5px;
       transition: width 0.5s;
     }
+
+    footer {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
   </style>
 </head>
 
 <body>
-  <!-- <model-viewer> HTML element -->
-  <model-viewer src="models/among_us_3d_modelo_con_esqueleto.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
-    tone-mapping="neutral" shadow-intensity="1" autoplay>
-    <div class="progress-bar hide" slot="progress-bar">
-      <div class="update-bar"></div>
-    </div>
-    <button slot="ar-button" id="ar-button">
-      View in your space
-    </button>
-    <div id="ar-prompt">
-      <img src="ar_hand_prompt.png" alt="AR Prompt">
-    </div>
-  </model-viewer>
+  <header>
+    3D Model Viewer
+  </header>
+
+  <main>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer src="models/among_us_3d_modelo_con_esqueleto.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+      tone-mapping="neutral" poster="poster.webp" shadow-intensity="1" autoplay>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+        View in your space
+      </button>
+      <div id="ar-prompt">
+        <img src="ar_hand_prompt.png" alt="AR Prompt">
+      </div>
+    </model-viewer>
+  </main>
+
+  <footer>
+    © 2024 Zinedine Acosta Hernández
+  </footer>
 
   <script src="script.js"></script>
   <!-- Loads <model-viewer> for browsers: -->
